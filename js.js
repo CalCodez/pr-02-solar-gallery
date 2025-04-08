@@ -168,4 +168,15 @@ const planetData = {
 const { mercury, venus, earth, mars, jupiter, saturn, uranus, neptune, pluto, moon, sun } =
 	planetData;
 
-console.log(earth);
+const toggler = select('.planet-toggler');
+const planetContainer = select('.planet-container');
+
+toggler.addEventListener(click, () => {
+	const open = 'open-container';
+
+	if (!planetContainer.classList.contains(open)) {
+		toggleClass(planetContainer, open);
+	} else {
+		toggleClass(planetContainer, open);
+	}
+});

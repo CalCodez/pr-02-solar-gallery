@@ -24,3 +24,38 @@ a {
 	justify-content: center;
 	align-items: center;
 }
+
+html,
+body {
+	display: flex;
+	box-sizing: border-box;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+html {
+	background-image: url(/assets/bg_images/main_bg.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	/*background: var(--black);*/
+}
+
+body {
+	width: 100%;
+	max-width: 1300px;
+	height: fit-content;
+}
+
+h2 {
+	display: none;
+}
+
+h3 {
+	color: red;
+
+	width: 100%;
+	text-align: center;
+	font-size: 30px;
+}
