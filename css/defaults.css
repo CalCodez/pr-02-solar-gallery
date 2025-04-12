@@ -66,6 +66,7 @@ h3 {
 	font-size: 3rem;
 	font-family: var(--project-font);
 	text-shadow: var(--txt-shadow);
+	cursor: pointer;
 }
 
 h4 {
@@ -78,7 +79,22 @@ h4 {
 }
 
 h5 {
-	color: var(--font-color-main);
+	color: var(--font-color-secondary);
 	font-family: var(--project-font);
-	text-shadow: 1px -1px 1px var(--font-color-secondary);
+	text-shadow: 1px -1px 1px var(--font-color-main);
+	height: 20px;
+}
+
+.parent-toggler,
+.planet-toggler {
+	width: 100px;
+	height: 30px;
+	border-radius: 10px;
+	background-color: black;
+	color: var(--font-color-secondary);
+	box-shadow: var(--txt-shadow);
+}
+
+.parent-select-toggler:hover {
+	transform: scale(1.2);
 }
