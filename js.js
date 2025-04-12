@@ -28,6 +28,7 @@ const giantGroup = 'The Giants';
 const staplesGroup = 'Galaxy Staples';
 const defaultName = 'Select Planet Type To View';
 const planetHeaders = selectAll('h2'); //.open-container h2 (planet name headers)
+const mainWrapper = getById('main-wrapper');
 
 const [rocks, giants, staples] = parentTogglers;
 
@@ -37,6 +38,7 @@ const groupViewSelect = (toggler, container, name) => {
 			toggleClass(entrySelectContainer, flexInactive);
 			toggleClass(container, flexActive);
 			textContent(groupName, name);
+			mainWrapper.style.background = 'none';
 
 			setTimeout(() => {
 				toggleClass(parentExitBtn, flexActive);
@@ -55,6 +57,7 @@ const groupViewSelect = (toggler, container, name) => {
 			toggleClass(container, flexActive);
 			textContent(groupName, defaultName);
 			toggleClass(parentExitBtn, flexActive);
+			mainWrapper.style.background = 'var(--black)';
 		}
 	});
 };
