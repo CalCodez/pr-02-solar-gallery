@@ -20,15 +20,16 @@ const rocksContainer = getById('rocks-parent');
 const gasesContainer = getById('gases-parent');
 const staplesContainer = getById('staples-parent');
 const parentTogglers = getByClass('parent-toggler');
-const tempExit = getById('temp-exit');
+const parentExitBtn = getById('parent-exit-btn');
 const groupName = getById('group-name');
 
 const rockGroup = 'The Rocks';
 const giantGroup = 'The Giants';
 const staplesGroup = 'Galaxy Staples';
 const defaultName = 'Select Planet Type To View';
+const planetHeaders = selectAll('h2');
 
-const [temp, rocks, gases, staples] = parentTogglers;
+const [rocks, gases, staples] = parentTogglers;
 
 const groupViewSelect = (toggler, container, name) => {
 	toggler.addEventListener(click, () => {
@@ -36,16 +37,16 @@ const groupViewSelect = (toggler, container, name) => {
 			toggleClass(entrySelectContainer, flexInactive);
 			toggleClass(container, flexActive);
 			textContent(groupName, name);
-			toggleClass(temp, flexActive);
+			toggleClass(parentExitBtn, flexActive);
 		}
 	});
 
-	tempExit.addEventListener(click, () => {
+	parentExitBtn.addEventListener(click, () => {
 		if (container.classList.contains(flexActive)) {
 			toggleClass(entrySelectContainer, flexInactive);
 			toggleClass(container, flexActive);
 			textContent(groupName, defaultName);
-			toggleClass(temp, flexActive);
+			toggleClass(parentExitBtn, flexActive);
 		}
 	});
 };
@@ -67,6 +68,7 @@ const planetData = {
 		namedAfter: 'The Roman Messenger God',
 		surfaceTemp: '332F',
 		tilt: '~0.01 deg',
+		header: planetHeaders[0],
 	},
 
 	venus: {
@@ -81,6 +83,7 @@ const planetData = {
 		namedAfter: 'The Roman Goddess of Love',
 		surfaceTemp: '864F',
 		tilt: '23 degrees',
+		header: planetHeaders[1],
 	},
 	earth: {
 		position: '3',
@@ -94,6 +97,7 @@ const planetData = {
 		namedAfter: 'Mother Earth',
 		surfaceTemp: '59F',
 		tilt: '23 degrees',
+		header: planetHeaders[2],
 	},
 
 	mars: {
@@ -108,6 +112,7 @@ const planetData = {
 		namedAfter: 'The Roman God of War',
 		surfaceTemp: '-80F',
 		tilt: '25 degrees',
+		header: planetHeaders[3],
 	},
 
 	jupiter: {
@@ -122,6 +127,7 @@ const planetData = {
 		namedAfter: 'The Roman God of the Sky and Thunder',
 		surfaceTemp: '-234F',
 		tilt: '3 degrees',
+		header: planetHeaders[4],
 	},
 
 	saturn: {
@@ -136,6 +142,7 @@ const planetData = {
 		namedAfter: 'The Roman God of Agriculture and Wealth',
 		surfaceTemp: '-288F',
 		tilt: '26 degrees',
+		header: planetHeaders[5],
 	},
 
 	uranus: {
@@ -150,6 +157,7 @@ const planetData = {
 		namedAfter: 'The Greek God of the Sky',
 		surfaceTemp: '-357F',
 		tilt: '97 degrees',
+		header: planetHeaders[6],
 	},
 	neptune: {
 		position: '8',
@@ -163,6 +171,7 @@ const planetData = {
 		namedAfter: 'The Roman God of the Sea',
 		surfaceTemp: '-357F',
 		tilt: '28 degrees',
+		header: planetHeaders[7],
 	},
 	pluto: {
 		position: '9',
@@ -176,20 +185,9 @@ const planetData = {
 		namedAfter: 'The Roman god of the Underworld',
 		surfaceTemp: '-387F',
 		tilt: '23 degrees',
+		header: planetHeaders[8],
 	},
-	moon: {
-		position: 'At Earth',
-		type: 'Moon',
-		circumference: '7,590 miles',
-		rotation: '27 Days',
-		orbitalPeriod: '27 Days',
-		moonCount: '0',
-		sunDistance: '92 million miles',
-		earthDistance: '238,900 miles',
-		namedAfter: 'Luna',
-		surfaceTemp: '42F (extreme variation)',
-		tilt: '6 degrees',
-	},
+
 	sun: {
 		position: `I Am`,
 		type: 'Yellow Dwarf Star',
@@ -202,6 +200,22 @@ const planetData = {
 		namedAfter: ' SOL',
 		surfaceTemp: '5,800 kelvin',
 		tilt: '7 degrees',
+		header: planetHeaders[9],
+	},
+
+	moon: {
+		position: 'At Earth',
+		type: 'Moon',
+		circumference: '7,590 miles',
+		rotation: '27 Days',
+		orbitalPeriod: '27 Days',
+		moonCount: '0',
+		sunDistance: '92 million miles',
+		earthDistance: '238,900 miles',
+		namedAfter: 'Luna',
+		surfaceTemp: '42F (extreme variation)',
+		tilt: '6 degrees',
+		header: planetHeaders[10],
 	},
 
 	milkyWay: {
@@ -216,6 +230,7 @@ const planetData = {
 		namedAfter: ' The Milky WAy',
 		surfaceTemp: '2.725 kelvin',
 		tilt: '60 degrees',
+		header: planetHeaders[11],
 	},
 };
 
@@ -270,8 +285,6 @@ const [
 const factsWrappers = selectAll('.facts-wrapper');
 const factsSpan = selectAll('.facts-span');
 
-console.log(factsSpan);
-
 const planetFacts = (arr, obj) => {
 	textContent(arr[0], `Circumference: ${obj.circumference}`);
 	textContent(arr[1], `Rotation: ${obj.rotation}`);
@@ -289,6 +302,7 @@ const viewPlanets = (toggler, targetContainer, container2, container3, container
 	const typeSpan = select('.type-span');
 	const positionContainer = select('.position-container');
 	const positionSpan = select('.position-span');
+	const bounce = 'bounceInRight';
 
 	toggler.addEventListener(click, () => {
 		if (!targetContainer.classList.contains(open)) {
@@ -299,6 +313,7 @@ const viewPlanets = (toggler, targetContainer, container2, container3, container
 			toggleClass(nameSpan, flexActive);
 			toggleClass(typeSpan, flexActive);
 			toggleClass(positionContainer, flexActive);
+			toggleClass(obj.header, bounce);
 			for (let show of factsWrappers) {
 				toggleClass(show, flexActive);
 			}
@@ -306,7 +321,7 @@ const viewPlanets = (toggler, targetContainer, container2, container3, container
 			textContent(toggler, 'Close Window');
 			textContent(nameSpan, obj.namedAfter);
 			textContent(typeSpan, obj.type);
-			temp.style.visibility = 'hidden';
+			parentExitBtn.style.visibility = 'hidden';
 			textContent(positionSpan, obj.position);
 		} else {
 			toggleClass(targetContainer, open);
@@ -321,7 +336,8 @@ const viewPlanets = (toggler, targetContainer, container2, container3, container
 			textContent(toggler, 'View More');
 			toggleClass(nameSpan, flexActive);
 			toggleClass(typeSpan, flexActive);
-			temp.style.visibility = 'visible';
+			parentExitBtn.style.visibility = 'visible';
+			toggleClass(obj.header, bounce);
 		}
 	});
 };

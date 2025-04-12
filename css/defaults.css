@@ -85,7 +85,6 @@ h5 {
 	height: 20px;
 }
 
-.parent-toggler,
 .planet-toggler {
 	width: 100px;
 	height: 30px;
@@ -97,4 +96,11 @@ h5 {
 
 .parent-select-toggler:hover {
 	transform: scale(1.2);
+}
+
+.parent-exit-btn {
+	background-color: var(--black);
+	color: var(--font-color-secondary);
+	border: 2px outset var(--font-color-secondary);
+	border-radius: 20px;
 }
