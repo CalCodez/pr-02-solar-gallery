@@ -1,4 +1,4 @@
-.planet-container:hover .img-container {
+.planet-container:hover:not(.open-container) .img-container {
 	-webkit-animation-name: bounceIn;
 	animation-name: bounceIn;
 	-webkit-animation-duration: 0.75s;
