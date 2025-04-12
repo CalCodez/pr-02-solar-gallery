@@ -85,7 +85,8 @@
 	}
 }
 
-.planet-container:hover .info-container {
+.planet-container:hover .info-container,
+.pulse {
 	-webkit-animation-name: pulse;
 	animation-name: pulse;
 	-webkit-animation-duration: 1s;

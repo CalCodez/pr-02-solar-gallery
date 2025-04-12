@@ -17,7 +17,7 @@ const flexInactive = 'flex-inactive';
 
 const entrySelectContainer = getById('entry-select-container');
 const rocksContainer = getById('rocks-parent');
-const gasesContainer = getById('gases-parent');
+const giantsContainer = getById('giants-parent');
 const staplesContainer = getById('staples-parent');
 const parentTogglers = getByClass('parent-toggler');
 const parentExitBtn = getById('parent-exit-btn');
@@ -27,9 +27,9 @@ const rockGroup = 'The Rocks';
 const giantGroup = 'The Giants';
 const staplesGroup = 'Galaxy Staples';
 const defaultName = 'Select Planet Type To View';
-const planetHeaders = selectAll('h2');
+const planetHeaders = selectAll('h2'); //.open-container h2 (planet name headers)
 
-const [rocks, gases, staples] = parentTogglers;
+const [rocks, giants, staples] = parentTogglers;
 
 const groupViewSelect = (toggler, container, name) => {
 	toggler.addEventListener(click, () => {
@@ -37,7 +37,15 @@ const groupViewSelect = (toggler, container, name) => {
 			toggleClass(entrySelectContainer, flexInactive);
 			toggleClass(container, flexActive);
 			textContent(groupName, name);
-			toggleClass(parentExitBtn, flexActive);
+
+			setTimeout(() => {
+				toggleClass(parentExitBtn, flexActive);
+				toggleClass(parentExitBtn, 'pulse');
+			}, 400);
+
+			setTimeout(() => {
+				toggleClass(parentExitBtn, 'pulse');
+			}, 800);
 		}
 	});
 
@@ -52,7 +60,7 @@ const groupViewSelect = (toggler, container, name) => {
 };
 
 groupViewSelect(rocks, rocksContainer, rockGroup);
-groupViewSelect(gases, gasesContainer, giantGroup);
+groupViewSelect(giants, giantsContainer, giantGroup);
 groupViewSelect(staples, staplesContainer, staplesGroup);
 
 const planetData = {
@@ -303,6 +311,7 @@ const viewPlanets = (toggler, targetContainer, container2, container3, container
 	const positionContainer = select('.position-container');
 	const positionSpan = select('.position-span');
 	const bounce = 'bounceInRight';
+	const pulse = 'pulse';
 
 	toggler.addEventListener(click, () => {
 		if (!targetContainer.classList.contains(open)) {
@@ -336,7 +345,16 @@ const viewPlanets = (toggler, targetContainer, container2, container3, container
 			textContent(toggler, 'View More');
 			toggleClass(nameSpan, flexActive);
 			toggleClass(typeSpan, flexActive);
-			parentExitBtn.style.visibility = 'visible';
+
+			setTimeout(() => {
+				toggleClass(parentExitBtn, pulse);
+				parentExitBtn.style.visibility = 'visible';
+			}, 400);
+
+			setTimeout(() => {
+				toggleClass(parentExitBtn, pulse);
+			}, 800);
+
 			toggleClass(obj.header, bounce);
 		}
 	});

@@ -24,6 +24,14 @@ a {
 	cursor: pointer;
 }
 
+button {
+	cursor: pointer;
+}
+
+button:hover {
+	transform: scale(1.1);
+}
+
 .container {
 	display: flex;
 	box-sizing: border-box;
@@ -103,4 +111,5 @@ h5 {
 	color: var(--font-color-secondary);
 	border: 2px outset var(--font-color-secondary);
 	border-radius: 20px;
+	margin-left: 20px;
 }
