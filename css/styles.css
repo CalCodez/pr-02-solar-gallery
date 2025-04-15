@@ -195,8 +195,19 @@
 }
 
 .facts-container-right {
-	right: 0;
-	background-color: red;
+	right: 10%;
+	line-height: 1.5;
+	text-align: center;
+	/*font-weight: 600;*/
+}
+
+.facts-container-right .planet-description::first-letter {
+	font-size: 2rem;
+	color: var(--font-color-main);
+	font-family: var(--project-font);
+	text-shadow: 1px 1px 1px var(--txt-shadow);
+	margin-left: 1px;
+	text-shadow: var(--txt-shadow);
 }
 
 .facts-span {

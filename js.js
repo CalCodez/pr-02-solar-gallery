@@ -80,6 +80,12 @@ const planetData = {
 		surfaceTemp: '332F',
 		tilt: '~0.01 deg',
 		header: planetHeaders[0],
+		description: `Mercury is the smallest planet in our solar system and the one closest to the Sun. It has a
+				rocky surface covered with craters, resembling Earth’s Moon. Due to its thin atmosphere,
+				temperatures vary greatly—scorching hot during the day and freezing cold at night. Mercury
+				orbits the Sun in just 88 Earth days, making it the fastest planet. It has no moons or
+				rings, and its weak magnetic field and lack of weather make it a fascinating subject of
+				study.`,
 	},
 
 	venus: {
@@ -95,6 +101,7 @@ const planetData = {
 		surfaceTemp: '864F',
 		tilt: '23 degrees',
 		header: planetHeaders[1],
+		description: `Venus is hot and cloudy; Earth supports life with water and air. Mars is dusty and may have once had life. Jupiter, the largest, has a Great Red Spot. Saturn’s rings are stunning. Uranus spins sideways. Neptune is windy and cold. Pluto, a dwarf planet, orbits far out. The Moon orbits Earth and affects tides. The Sun is a massive star at our system’s center. The Milky Way is our galaxy, containing billions of stars, planets, and cosmic mysteries.`,
 	},
 	earth: {
 		position: '3',
@@ -109,6 +116,7 @@ const planetData = {
 		surfaceTemp: '59F',
 		tilt: '23 degrees',
 		header: planetHeaders[2],
+		description: `Earth, the third planet from the Sun, teems with life and ecosystems. Oceans cover over 70% of its surface, nurturing diverse marine species. Its atmosphere shields inhabitants and supports weather patterns. Mountains, forests, and deserts shape varied landscapes. Earth's magnetic field protects against solar radiation. Rotating on its axis, it experiences day and night, while orbiting the Sun brings seasons. Home to humanity, Earth fosters culture, innovation, and interconnected societies, making it a dynamic and life-sustaining world.`,
 	},
 
 	mars: {
@@ -124,6 +132,7 @@ const planetData = {
 		surfaceTemp: '-80F',
 		tilt: '25 degrees',
 		header: planetHeaders[3],
+		description: `Mars, the fourth planet from the Sun, is a cold, desert-like world known as the Red Planet due to its iron-rich soil. Its thin atmosphere is mostly carbon dioxide, offering little protection from solar radiation. Mars features vast plains, towering volcanoes like Olympus Mons, and the deep Valles Marineris canyon. Dust storms frequently sweep its surface. Polar ice caps made of water and carbon dioxide freeze and melt seasonally. Robotic missions explore its terrain, seeking signs of past or present life.`,
 	},
 
 	jupiter: {
@@ -139,6 +148,7 @@ const planetData = {
 		surfaceTemp: '-234F',
 		tilt: '3 degrees',
 		header: planetHeaders[4],
+		description: `Jupiter, the largest planet in our solar system, is a massive gas giant composed mostly of hydrogen and helium. Known for its Great Red Spot, a giant storm persisting for centuries, Jupiter has a powerful magnetic field and dozens of moons, including Ganymede, the largest. Its atmosphere features colorful bands and intense storms. With no solid surface, its core remains mysterious. Jupiter’s immense gravity influences surrounding celestial bodies and helps shield inner planets from some comets and asteroids in space.`,
 	},
 
 	saturn: {
@@ -154,6 +164,7 @@ const planetData = {
 		surfaceTemp: '-288F',
 		tilt: '26 degrees',
 		header: planetHeaders[5],
+		description: `Saturn, the sixth planet from the Sun, is a stunning gas giant best known for its magnificent ring system made of ice and rock particles. Composed mainly of hydrogen and helium, Saturn has a low density and fast rotation, causing it to flatten at the poles. Its atmosphere displays swirling clouds and storms. Saturn hosts over 80 moons, including Titan, which has a thick atmosphere and liquid lakes. The planet’s magnetic field and mysterious interior continue to intrigue scientists and explorers alike.`,
 	},
 
 	uranus: {
@@ -169,7 +180,9 @@ const planetData = {
 		surfaceTemp: '-357F',
 		tilt: '97 degrees',
 		header: planetHeaders[6],
+		description: `Uranus, the seventh planet from the Sun, is an ice giant with a pale blue-green hue due to methane in its atmosphere. Uniquely tilted on its side, Uranus rotates almost horizontally, resulting in extreme seasonal variations. Its atmosphere contains hydrogen, helium, and icy compounds, with faint cloud bands and occasional storms. Surrounded by faint rings and at least 27 known moons, Uranus remains mysterious and underexplored. Its cold temperatures and unusual orientation make it one of the solar system’s most intriguing worlds.`,
 	},
+
 	neptune: {
 		position: '8',
 		type: 'Ice Giant',
@@ -183,7 +196,9 @@ const planetData = {
 		surfaceTemp: '-357F',
 		tilt: '28 degrees',
 		header: planetHeaders[7],
+		description: `Neptune, the eighth and farthest known planet from the Sun, is a cold, deep blue ice giant. Its vivid color comes from methane in the atmosphere, which also hosts dynamic weather systems and the fastest winds in the solar system. Neptune has dark storm spots, similar to Jupiter’s Great Red Spot. It’s encircled by faint rings and has 14 known moons, including Triton, which orbits backward. Discovered in 1846, Neptune remains a distant, mysterious world full of atmospheric and orbital wonders.`,
 	},
+
 	pluto: {
 		position: '9',
 		type: 'Dwarf Planet',
@@ -197,6 +212,7 @@ const planetData = {
 		surfaceTemp: '-387F',
 		tilt: '23 degrees',
 		header: planetHeaders[8],
+		description: `Pluto, once considered the ninth planet, is now classified as a dwarf planet in the Kuiper Belt. It has a highly elliptical orbit, sometimes bringing it closer to the Sun than Neptune. Composed mostly of ice and rock, Pluto’s surface features frozen nitrogen, methane, and carbon monoxide. Its atmosphere is thin, expanding and contracting with its orbit. Pluto has five known moons, with Charon being the largest. Its distant, icy nature makes it one of the most mysterious objects in our solar system.`,
 	},
 
 	sun: {
@@ -212,6 +228,7 @@ const planetData = {
 		surfaceTemp: '5,800 kelvin',
 		tilt: '7 degrees',
 		header: planetHeaders[9],
+		description: `Sun (the sun) is a star, a massive ball of hot gas primarily composed of hydrogen and helium. It's the center of our solar system and provides the light and heat essential for life on Earth. The Sun is a yellow dwarf star, meaning it's relatively small and average-sized compared to other stars. It's about 93 million miles from Earth and its diameter is roughly 864,938 miles. The Sun's gravity holds the solar system together, and its energy sustains life on Earth through photosynthesis and by warming our planet.`,
 	},
 
 	moon: {
@@ -227,6 +244,7 @@ const planetData = {
 		surfaceTemp: '42F (extreme variation)',
 		tilt: '6 degrees',
 		header: planetHeaders[10],
+		description: `Luna - The Moon, Earth's only natural satellite, orbits our planet at an average distance of about 384,400 kilometers. Its surface is covered in craters, plains, and mountains, shaped by billions of years of impacts. The Moon has no atmosphere, causing extreme temperature fluctuations. It influences Earth’s tides through gravitational pull and stabilizes its axial tilt. The Moon goes through phases, from new to full, as it orbits Earth. It has been a key target for space exploration and scientific study.`,
 	},
 
 	milkyWay: {
@@ -242,6 +260,7 @@ const planetData = {
 		surfaceTemp: '2.725 kelvin',
 		tilt: '60 degrees',
 		header: planetHeaders[11],
+		description: `Milky Way (our home galaxy) The Milky Way is a vast spiral galaxy containing over 100 billion stars, including our Sun. Its structure features a central bulge, surrounded by a flat disk with spiral arms. The galaxy spans about 100,000 light-years in diameter and is home to various star systems, nebulae, and planetary systems. The Milky Way also contains dark matter, influencing its gravitational behavior. Our solar system resides in one of its spiral arms, the Orion Arm, about 27,000 light-years from the galactic center.`,
 	},
 };
 
@@ -293,7 +312,6 @@ const [
 	contMilkyWay,
 ] = planetContainer;
 
-const factsWrappers = selectAll('.facts-wrapper');
 const factsSpan = selectAll('.facts-span');
 
 const planetFacts = (arr, obj) => {
@@ -315,6 +333,8 @@ const viewPlanets = (toggler, targetContainer, container2, container3, container
 	const positionContainer = select('.position-container');
 	const bounce = 'bounceInRight';
 	const pulse = 'pulse';
+	const planetDescription = select('.planet-description');
+	const factsWrappers = selectAll('.facts-wrapper');
 
 	toggler.addEventListener(click, () => {
 		if (!targetContainer.classList.contains(open)) {
@@ -329,6 +349,10 @@ const viewPlanets = (toggler, targetContainer, container2, container3, container
 				toggleClass(show, flexActive);
 			}
 			planetFacts(factsSpan, obj);
+			textContent(planetDescription, obj.description);
+
+			console.log(planetDescription);
+
 			textContent(toggler, 'Close Window');
 			textContent(nameSpan, obj.namedAfter);
 			textContent(typeSpan, obj.type);
