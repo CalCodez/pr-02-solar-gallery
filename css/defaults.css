@@ -75,6 +75,8 @@ h3 {
 	font-family: var(--project-font);
 	text-shadow: var(--txt-shadow);
 	cursor: pointer;
+	width: 100%;
+	text-align: center;
 }
 
 h4 {

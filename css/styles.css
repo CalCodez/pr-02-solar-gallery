@@ -114,6 +114,7 @@
 	align-items: center;
 	flex-direction: column;
 	flex-shrink: 0;
+	transition: width ease-out 0.5s;
 }
 
 .planet-container:hover {
@@ -186,6 +187,7 @@
 	top: 20%;
 	justify-content: space-evenly;
 	display: none;
+	color: var(--font-color-secondary);
 }
 
 .facts-container-left {
@@ -194,17 +196,16 @@
 
 .facts-container-right {
 	right: 0;
+	background-color: red;
 }
 
 .facts-span {
-	width: 80%;
+	width: 95%;
 	height: 40px;
-	color: var(--font-color-secondary);
 	border-radius: 10px;
 	place-content: center;
 	margin-left: 5px;
 }
-
 .name-span,
 .type-span {
 	width: fit-content;
@@ -218,11 +219,10 @@
 }
 
 .name-span {
-	bottom: 10%;
+	bottom: 15%;
 }
-
 .type-span {
-	bottom: 5%;
+	bottom: 10%;
 }
 
 .flex-active {

@@ -297,22 +297,22 @@ const factsWrappers = selectAll('.facts-wrapper');
 const factsSpan = selectAll('.facts-span');
 
 const planetFacts = (arr, obj) => {
-	textContent(arr[0], `Circumference: ${obj.circumference}`);
-	textContent(arr[1], `Rotation: ${obj.rotation}`);
-	textContent(arr[2], `Orbital Period: ${obj.orbitalPeriod}`);
-	textContent(arr[3], `Surface Temp: ${obj.surfaceTemp}`);
-	textContent(arr[4], `Moon Count: ${obj.moonCount}`);
-	textContent(arr[5], `Axis Tilt: ${obj.tilt}`);
-	textContent(arr[6], `Distance From Earth: ${obj.earthDistance}`);
-	textContent(arr[7], `Distance From The Sun: ${obj.sunDistance}`);
+	textContent(arr[0], `Position From Sun: ${obj.position}`);
+	textContent(arr[1], `Circumference: ${obj.circumference}`);
+	textContent(arr[2], `Rotation: ${obj.rotation}`);
+	textContent(arr[3], `Orbital Period: ${obj.orbitalPeriod}`);
+	textContent(arr[4], `Surface Temp: ${obj.surfaceTemp}`);
+	textContent(arr[5], `Moon Count: ${obj.moonCount}`);
+	textContent(arr[6], `Axis Tilt: ${obj.tilt}`);
+	textContent(arr[7], `Distance From Earth: ${obj.earthDistance}`);
+	textContent(arr[8], `Distance From The Sun: ${obj.sunDistance}`);
 };
 
 const viewPlanets = (toggler, targetContainer, container2, container3, container4, obj) => {
 	const open = 'open-container';
-	const nameSpan = select('.name-span');
 	const typeSpan = select('.type-span');
+	const nameSpan = select('.name-span');
 	const positionContainer = select('.position-container');
-	const positionSpan = select('.position-span');
 	const bounce = 'bounceInRight';
 	const pulse = 'pulse';
 
@@ -324,7 +324,6 @@ const viewPlanets = (toggler, targetContainer, container2, container3, container
 			toggleClass(container4, flexInactive);
 			toggleClass(nameSpan, flexActive);
 			toggleClass(typeSpan, flexActive);
-			toggleClass(positionContainer, flexActive);
 			toggleClass(obj.header, bounce);
 			for (let show of factsWrappers) {
 				toggleClass(show, flexActive);
@@ -334,7 +333,6 @@ const viewPlanets = (toggler, targetContainer, container2, container3, container
 			textContent(nameSpan, obj.namedAfter);
 			textContent(typeSpan, obj.type);
 			parentExitBtn.style.visibility = 'hidden';
-			textContent(positionSpan, obj.position);
 		} else {
 			toggleClass(targetContainer, open);
 			toggleClass(container2, flexInactive);
