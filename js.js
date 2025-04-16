@@ -37,8 +37,13 @@ const groupViewSelect = (toggler, container, name) => {
 		if (!container.classList.contains(flexActive)) {
 			toggleClass(entrySelectContainer, flexInactive);
 			toggleClass(container, flexActive);
-			textContent(groupName, name);
 			mainWrapper.style.background = 'none';
+
+			if (window.innerWidth <= 600 && entrySelectContainer.classList.contains(flexInactive)) {
+				groupName.style.visibility = 'hidden';
+			} else {
+				textContent(groupName, name);
+			}
 
 			setTimeout(() => {
 				toggleClass(parentExitBtn, flexActive);
@@ -55,9 +60,15 @@ const groupViewSelect = (toggler, container, name) => {
 		if (container.classList.contains(flexActive)) {
 			toggleClass(entrySelectContainer, flexInactive);
 			toggleClass(container, flexActive);
-			textContent(groupName, defaultName);
 			toggleClass(parentExitBtn, flexActive);
 			mainWrapper.style.background = 'var(--black)';
+
+			if (groupName.style.visibility == 'hidden') {
+				groupName.style.visibility = 'visible';
+				textContent(groupName, defaultName);
+			} else {
+				textContent(groupName, defaultName);
+			}
 		}
 	});
 };
@@ -350,8 +361,6 @@ const viewPlanets = (toggler, targetContainer, container2, container3, container
 			}
 			planetFacts(factsSpan, obj);
 			textContent(planetDescription, obj.description);
-
-			console.log(planetDescription);
 
 			textContent(toggler, 'Close Window');
 			textContent(nameSpan, obj.namedAfter);
