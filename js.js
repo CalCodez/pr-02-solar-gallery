@@ -227,12 +227,12 @@ const planetData = {
 	},
 
 	sun: {
-		position: `I Am`,
+		position: `0`,
 		type: 'Yellow Dwarf Star',
 		circumference: '2,715,396 miles',
 		rotation: '27 Days',
 		orbitalPeriod: '250 Million Years',
-		moonCount: 'Millions of Orbital Objects',
+		moonCount: 'Countless',
 		sunDistance: '0',
 		earthDistance: '93 million miles',
 		namedAfter: ' SOL',
@@ -264,7 +264,7 @@ const planetData = {
 		circumference: '314,000 Light Years',
 		rotation: '700 Million Years',
 		orbitalPeriod: '250 Million Years',
-		moonCount: 'Billions of Orbital Objects',
+		moonCount: 'Countless',
 		sunDistance: '26,000 Light Years From The Center',
 		earthDistance: '26,000 Light Years From Center',
 		namedAfter: ' The Milky WAy',
@@ -323,29 +323,30 @@ const [
 	contMilkyWay,
 ] = planetContainer;
 
-const factsSpan = selectAll('.facts-span');
-
 const planetFacts = (arr, obj) => {
-	textContent(arr[0], `Position From Sun: ${obj.position}`);
-	textContent(arr[1], `Circumference: ${obj.circumference}`);
-	textContent(arr[2], `Rotation: ${obj.rotation}`);
-	textContent(arr[3], `Orbital Period: ${obj.orbitalPeriod}`);
-	textContent(arr[4], `Surface Temp: ${obj.surfaceTemp}`);
-	textContent(arr[5], `Moon Count: ${obj.moonCount}`);
-	textContent(arr[6], `Axis Tilt: ${obj.tilt}`);
-	textContent(arr[7], `Distance From Earth: ${obj.earthDistance}`);
-	textContent(arr[8], `Distance From The Sun: ${obj.sunDistance}`);
+	textContent(arr[0], obj.tilt);
+	textContent(arr[1], obj.position);
+	textContent(arr[2], obj.rotation);
+	textContent(arr[3], obj.sunDistance);
+	textContent(arr[4], obj.moonCount);
+	textContent(arr[5], obj.surfaceTemp);
+	textContent(arr[6], obj.orbitalPeriod);
+	textContent(arr[7], obj.earthDistance);
+	textContent(arr[8], obj.circumference);
 };
 
 const viewPlanets = (toggler, targetContainer, container2, container3, container4, obj) => {
 	const open = 'open-container';
 	const typeSpan = select('.type-span');
 	const nameSpan = select('.name-span');
-	const positionContainer = select('.position-container');
+	const factsSpan = selectAll('.facts-span');
 	const bounce = 'bounceInRight';
 	const pulse = 'pulse';
+	const zoomIn = 'zoomIn';
 	const planetDescription = select('.planet-description');
 	const factsWrappers = selectAll('.facts-wrapper');
+	const [wrapperLeft, wrapperRight] = factsWrappers;
+	const factsContainerWrapper = select('.facts-container-wrapper');
 
 	toggler.addEventListener(click, () => {
 		if (!targetContainer.classList.contains(open)) {
@@ -356,9 +357,15 @@ const viewPlanets = (toggler, targetContainer, container2, container3, container
 			toggleClass(nameSpan, flexActive);
 			toggleClass(typeSpan, flexActive);
 			toggleClass(obj.header, bounce);
-			for (let show of factsWrappers) {
-				toggleClass(show, flexActive);
-			}
+			toggleClass(factsContainerWrapper, flexActive);
+
+			setTimeout(() => {
+				toggleClass(wrapperLeft, flexActive);
+				toggleClass(wrapperLeft, pulse);
+				toggleClass(wrapperRight, flexActive);
+				toggleClass(wrapperRight, zoomIn);
+			}, 500);
+
 			planetFacts(factsSpan, obj);
 			textContent(planetDescription, obj.description);
 
@@ -371,10 +378,11 @@ const viewPlanets = (toggler, targetContainer, container2, container3, container
 			toggleClass(container2, flexInactive);
 			toggleClass(container3, flexInactive);
 			toggleClass(container4, flexInactive);
-			for (let show of factsWrappers) {
-				toggleClass(show, flexActive);
-			}
-			toggleClass(positionContainer, flexActive);
+			toggleClass(factsContainerWrapper, flexActive);
+			toggleClass(wrapperLeft, flexActive);
+			toggleClass(wrapperLeft, pulse);
+			toggleClass(wrapperRight, flexActive);
+			toggleClass(wrapperRight, zoomIn);
 
 			textContent(toggler, 'View More');
 			toggleClass(nameSpan, flexActive);
