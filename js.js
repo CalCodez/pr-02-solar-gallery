@@ -347,6 +347,7 @@ const viewPlanets = (toggler, targetContainer, container2, container3, container
 	const factsWrappers = selectAll('.facts-wrapper');
 	const [wrapperLeft, wrapperRight] = factsWrappers;
 	const factsContainerWrapper = select('.facts-container-wrapper');
+	const shuffleContainer = select('.shuffle-container');
 
 	toggler.addEventListener(click, () => {
 		if (!targetContainer.classList.contains(open)) {
@@ -357,6 +358,7 @@ const viewPlanets = (toggler, targetContainer, container2, container3, container
 			toggleClass(nameSpan, flexActive);
 			toggleClass(typeSpan, flexActive);
 			toggleClass(obj.header, bounce);
+			toggleClass(shuffleContainer, flexActive);
 			toggleClass(factsContainerWrapper, flexActive);
 
 			setTimeout(() => {
@@ -383,7 +385,7 @@ const viewPlanets = (toggler, targetContainer, container2, container3, container
 			toggleClass(wrapperLeft, pulse);
 			toggleClass(wrapperRight, flexActive);
 			toggleClass(wrapperRight, zoomIn);
-
+			toggleClass(shuffleContainer, flexActive);
 			textContent(toggler, 'View More');
 			toggleClass(nameSpan, flexActive);
 			toggleClass(typeSpan, flexActive);
