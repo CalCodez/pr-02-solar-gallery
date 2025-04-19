@@ -79,6 +79,7 @@ groupViewSelect(staples, staplesContainer, staplesGroup);
 
 const planetData = {
 	mercury: {
+		id: 'mercury',
 		position: '1',
 		type: 'Terrestrial',
 		circumference: '9,525 miles',
@@ -100,6 +101,7 @@ const planetData = {
 	},
 
 	venus: {
+		id: 'venus',
 		position: '2',
 		type: 'Terrestrial',
 		circumference: '23,628 miles',
@@ -115,6 +117,7 @@ const planetData = {
 		description: `Venus is hot and cloudy; Earth supports life with water and air. Mars is dusty and may have once had life. Jupiter, the largest, has a Great Red Spot. Saturn’s rings are stunning. Uranus spins sideways. Neptune is windy and cold. Pluto, a dwarf planet, orbits far out. The Moon orbits Earth and affects tides. The Sun is a massive star at our system’s center. The Milky Way is our galaxy, containing billions of stars, planets, and cosmic mysteries.`,
 	},
 	earth: {
+		id: 'earth',
 		position: '3',
 		type: 'Terrestrial',
 		circumference: '24,901 miles',
@@ -131,6 +134,7 @@ const planetData = {
 	},
 
 	mars: {
+		id: 'mars',
 		position: '4',
 		type: 'Terrestrial',
 		circumference: '13,300 miles',
@@ -147,6 +151,7 @@ const planetData = {
 	},
 
 	jupiter: {
+		id: 'jupiter',
 		position: '5',
 		type: 'Gas Giant',
 		circumference: '278,985 miles',
@@ -163,6 +168,7 @@ const planetData = {
 	},
 
 	saturn: {
+		id: 'saturn',
 		position: '6',
 		type: 'Gas Giant',
 		circumference: '278,985 miles',
@@ -179,6 +185,7 @@ const planetData = {
 	},
 
 	uranus: {
+		id: 'uranus',
 		position: '7',
 		type: 'Ice Giant',
 		circumference: '132,630 miles ',
@@ -195,6 +202,7 @@ const planetData = {
 	},
 
 	neptune: {
+		id: 'neptune',
 		position: '8',
 		type: 'Ice Giant',
 		circumference: '132,630 miles',
@@ -211,6 +219,7 @@ const planetData = {
 	},
 
 	pluto: {
+		id: 'pluto',
 		position: '9',
 		type: 'Dwarf Planet',
 		circumference: '4,627 miles',
@@ -227,6 +236,7 @@ const planetData = {
 	},
 
 	sun: {
+		id: 'sun',
 		position: `0`,
 		type: 'Yellow Dwarf Star',
 		circumference: '2,715,396 miles',
@@ -243,6 +253,7 @@ const planetData = {
 	},
 
 	moon: {
+		id: 'moon',
 		position: 'At Earth',
 		type: 'Moon',
 		circumference: '7,590 miles',
@@ -259,6 +270,7 @@ const planetData = {
 	},
 
 	milkyWay: {
+		id: 'milkyWay',
 		position: 'Host Of',
 		type: 'Spiral Galaxy',
 		circumference: '314,000 Light Years',
@@ -290,7 +302,22 @@ const {
 	milkyWay,
 } = planetData;
 
-const toggler = selectAll('.planet-toggler');
+const arrOfPlanets = [
+	mercury,
+	venus,
+	earth,
+	mars,
+	jupiter,
+	saturn,
+	uranus,
+	neptune,
+	pluto,
+	sun,
+	moon,
+	milkyWay,
+];
+
+const togglers = selectAll('.planet-toggler');
 const planetContainer = selectAll('.planet-container');
 
 const [
@@ -306,7 +333,7 @@ const [
 	toggleSun,
 	toggleMoon,
 	toggleMilkyWay,
-] = toggler;
+] = togglers;
 
 const [
 	contMercury,
@@ -335,78 +362,12 @@ const planetFacts = (arr, obj) => {
 	textContent(arr[8], obj.circumference);
 };
 
-const ShuffleUpdate = (container, arr, description, named, type) => {
-	if (container.id == 'mercury') {
-		planetFacts(arr, mercury);
-		textContent(description, mercury.description);
-		textContent(named, mercury.namedAfter);
-		textContent(type, mercury.type);
-	}
-	if (container.id == 'venus') {
-		planetFacts(arr, venus);
-		textContent(description, venus.description);
-		textContent(named, venus.namedAfter);
-		textContent(type, venus.type);
-	}
-	if (container.id == 'earth') {
-		planetFacts(arr, earth);
-		textContent(description, earth.description);
-		textContent(named, earth.namedAfter);
-		textContent(type, earth.type);
-	}
-	if (container.id == 'mars') {
-		planetFacts(arr, mars);
-		textContent(description, mars.description);
-		textContent(named, mars.namedAfter);
-		textContent(type, mars.type);
-	}
-	if (container.id == 'jupiter') {
-		planetFacts(arr, jupiter);
-		textContent(description, jupiter.description);
-		textContent(named, jupiter.namedAfter);
-		textContent(type, jupiter.type);
-	}
-	if (container.id == 'saturn') {
-		planetFacts(arr, saturn);
-		textContent(description, saturn.description);
-		textContent(named, saturn.namedAfter);
-		textContent(type, saturn.type);
-	}
-	if (container.id == 'uranus') {
-		planetFacts(arr, uranus);
-		textContent(description, uranus.description);
-		textContent(named, uranus.namedAfter);
-		textContent(type, uranus.type);
-	}
-	if (container.id == 'neptune') {
-		planetFacts(arr, neptune);
-		textContent(description, neptune.description);
-		textContent(named, neptune.namedAfter);
-		textContent(type, neptune.type);
-	}
-	if (container.id == 'pluto') {
-		planetFacts(arr, pluto);
-		textContent(description, pluto.description);
-		textContent(named, pluto.namedAfter);
-		textContent(type, pluto.type);
-	}
-	if (container.id == 'sun') {
-		planetFacts(arr, sun);
-		textContent(description, sun.description);
-		textContent(named, sun.namedAfter);
-		textContent(type, sun.type);
-	}
-	if (container.id == 'moon') {
-		planetFacts(arr, moon);
-		textContent(description, moon.description);
-		textContent(named, moon.namedAfter);
-		textContent(type, moon.type);
-	}
-	if (container.id == 'milkyWay') {
-		planetFacts(arr, milkyWay);
-		textContent(description, milkyWay.description);
-		textContent(named, milkyWay.namedAfter);
-		textContent(type, milkyWay.type);
+const ShuffleUpdate = (container, arr, obj, description, named, type) => {
+	if (container.id == obj.id) {
+		planetFacts(arr, obj);
+		textContent(description, obj.description);
+		textContent(named, obj.namedAfter);
+		textContent(type, obj.type);
 	}
 };
 
@@ -447,7 +408,6 @@ const viewPlanets = (toggler, targetContainer, container2, container3, container
 			planetFacts(factsSpan, obj);
 			textContent(planetDescription, obj.description);
 
-			textContent(toggler, 'Close Window');
 			textContent(nameSpan, obj.namedAfter);
 			textContent(typeSpan, obj.type);
 			parentExitBtn.style.visibility = 'hidden';
@@ -466,10 +426,11 @@ const viewPlanets = (toggler, targetContainer, container2, container3, container
 					toggleClass(wrapperLeft, flexActive);
 					toggleClass(wrapperRight, flexActive);
 					toggleClass(targetContainer.children[1], bounce);
-					textContent(container2.children[2].children[1], 'Close Window');
-
 					toggleClass(container2.children[1], bounce);
-					ShuffleUpdate(container2, factsSpan, planetDescription, nameSpan, typeSpan);
+
+					for (let id of arrOfPlanets) {
+						ShuffleUpdate(container2, factsSpan, id, planetDescription, nameSpan, typeSpan);
+					}
 
 					setTimeout(() => {
 						toggleClass(wrapperLeft, flexActive);
@@ -491,9 +452,10 @@ const viewPlanets = (toggler, targetContainer, container2, container3, container
 					toggleClass(wrapperRight, flexActive);
 					toggleClass(container2.children[1], bounce);
 					toggleClass(container3.children[1], bounce);
-					textContent(container3.children[2].children[1], 'Close Window');
 
-					ShuffleUpdate(container3, factsSpan, planetDescription, nameSpan, typeSpan);
+					for (let id of arrOfPlanets) {
+						ShuffleUpdate(container3, factsSpan, id, planetDescription, nameSpan, typeSpan);
+					}
 
 					setTimeout(() => {
 						toggleClass(wrapperLeft, flexActive);
@@ -515,9 +477,10 @@ const viewPlanets = (toggler, targetContainer, container2, container3, container
 					toggleClass(wrapperRight, flexActive);
 					toggleClass(container3.children[1], bounce);
 					toggleClass(container4.children[1], bounce);
-					textContent(container4.children[2].children[1], 'Close Window');
 
-					ShuffleUpdate(container4, factsSpan, planetDescription, nameSpan, typeSpan);
+					for (let id of arrOfPlanets) {
+						ShuffleUpdate(container4, factsSpan, id, planetDescription, nameSpan, typeSpan);
+					}
 
 					setTimeout(() => {
 						toggleClass(wrapperLeft, flexActive);
@@ -539,8 +502,10 @@ const viewPlanets = (toggler, targetContainer, container2, container3, container
 					toggleClass(wrapperRight, flexActive);
 					toggleClass(container4.children[1], bounce);
 					toggleClass(targetContainer.children[1], bounce);
-					ShuffleUpdate(targetContainer, factsSpan, planetDescription, nameSpan, typeSpan);
-					textContent(targetContainer.children[2].children[1], 'Close Window');
+
+					for (let id of arrOfPlanets) {
+						ShuffleUpdate(targetContainer, factsSpan, id, planetDescription, nameSpan, typeSpan);
+					}
 
 					setTimeout(() => {
 						toggleClass(wrapperLeft, flexActive);
@@ -561,7 +526,6 @@ const viewPlanets = (toggler, targetContainer, container2, container3, container
 			toggleClass(wrapperRight, flexActive);
 			toggleClass(wrapperRight, zoomIn);
 			toggleClass(shuffleContainer, flexActive);
-			textContent(toggler, 'View More');
 			toggleClass(nameSpan, flexActive);
 			toggleClass(typeSpan, flexActive);
 
@@ -596,7 +560,3 @@ viewPlanets(togglePluto, contPluto, contSun, contMoon, contMilkyWay, pluto);
 viewPlanets(toggleSun, contSun, contPluto, contMoon, contMilkyWay, sun);
 viewPlanets(toggleMoon, contMoon, contPluto, contSun, contMilkyWay, moon);
 viewPlanets(toggleMilkyWay, contMilkyWay, contPluto, contSun, contMoon, milkyWay);
-
-const test = rocksContainer.children[0].children[2].children[1];
-
-console.log(test);
