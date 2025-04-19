@@ -19,12 +19,12 @@
 	z-index: 5;
 }
 
-.shuffle-container button {
+.shuffle-container .shuffle-btn {
 	height: 30px;
 	width: 80px;
 	background-color: var(--black);
-	color: red;
-	box-shadow: 1px 1px 3px 1px red;
+	color: var(--font-color-secondary);
+	box-shadow: 1px 1px 3px 1px var(--font-color-secondary);
 	border-radius: 8px;
 }
 

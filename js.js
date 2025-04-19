@@ -335,6 +335,81 @@ const planetFacts = (arr, obj) => {
 	textContent(arr[8], obj.circumference);
 };
 
+const ShuffleUpdate = (container, arr, description, named, type) => {
+	if (container.id == 'mercury') {
+		planetFacts(arr, mercury);
+		textContent(description, mercury.description);
+		textContent(named, mercury.namedAfter);
+		textContent(type, mercury.type);
+	}
+	if (container.id == 'venus') {
+		planetFacts(arr, venus);
+		textContent(description, venus.description);
+		textContent(named, venus.namedAfter);
+		textContent(type, venus.type);
+	}
+	if (container.id == 'earth') {
+		planetFacts(arr, earth);
+		textContent(description, earth.description);
+		textContent(named, earth.namedAfter);
+		textContent(type, earth.type);
+	}
+	if (container.id == 'mars') {
+		planetFacts(arr, mars);
+		textContent(description, mars.description);
+		textContent(named, mars.namedAfter);
+		textContent(type, mars.type);
+	}
+	if (container.id == 'jupiter') {
+		planetFacts(arr, jupiter);
+		textContent(description, jupiter.description);
+		textContent(named, jupiter.namedAfter);
+		textContent(type, jupiter.type);
+	}
+	if (container.id == 'saturn') {
+		planetFacts(arr, saturn);
+		textContent(description, saturn.description);
+		textContent(named, saturn.namedAfter);
+		textContent(type, saturn.type);
+	}
+	if (container.id == 'uranus') {
+		planetFacts(arr, uranus);
+		textContent(description, uranus.description);
+		textContent(named, uranus.namedAfter);
+		textContent(type, uranus.type);
+	}
+	if (container.id == 'neptune') {
+		planetFacts(arr, neptune);
+		textContent(description, neptune.description);
+		textContent(named, neptune.namedAfter);
+		textContent(type, neptune.type);
+	}
+	if (container.id == 'pluto') {
+		planetFacts(arr, pluto);
+		textContent(description, pluto.description);
+		textContent(named, pluto.namedAfter);
+		textContent(type, pluto.type);
+	}
+	if (container.id == 'sun') {
+		planetFacts(arr, sun);
+		textContent(description, sun.description);
+		textContent(named, sun.namedAfter);
+		textContent(type, sun.type);
+	}
+	if (container.id == 'moon') {
+		planetFacts(arr, moon);
+		textContent(description, moon.description);
+		textContent(named, moon.namedAfter);
+		textContent(type, moon.type);
+	}
+	if (container.id == 'milkyWay') {
+		planetFacts(arr, milkyWay);
+		textContent(description, milkyWay.description);
+		textContent(named, milkyWay.namedAfter);
+		textContent(type, milkyWay.type);
+	}
+};
+
 const viewPlanets = (toggler, targetContainer, container2, container3, container4, obj) => {
 	const open = 'open-container';
 	const typeSpan = select('.type-span');
@@ -348,6 +423,7 @@ const viewPlanets = (toggler, targetContainer, container2, container3, container
 	const [wrapperLeft, wrapperRight] = factsWrappers;
 	const factsContainerWrapper = select('.facts-container-wrapper');
 	const shuffleContainer = select('.shuffle-container');
+	const nextBtn = select('.shuffle-btn');
 
 	toggler.addEventListener(click, () => {
 		if (!targetContainer.classList.contains(open)) {
@@ -375,6 +451,105 @@ const viewPlanets = (toggler, targetContainer, container2, container3, container
 			textContent(nameSpan, obj.namedAfter);
 			textContent(typeSpan, obj.type);
 			parentExitBtn.style.visibility = 'hidden';
+
+			nextBtn.addEventListener(click, () => {
+				if (
+					targetContainer.classList.contains(open) &&
+					container2.classList.contains(flexInactive) &&
+					container3.classList.contains(flexInactive) &&
+					container4.classList.contains(flexInactive)
+				) {
+					toggleClass(targetContainer, open);
+					toggleClass(targetContainer, flexInactive);
+					toggleClass(container2, flexInactive);
+					toggleClass(container2, open);
+					toggleClass(wrapperLeft, flexActive);
+					toggleClass(wrapperRight, flexActive);
+					toggleClass(targetContainer.children[1], bounce);
+					textContent(container2.children[2].children[1], 'Close Window');
+
+					toggleClass(container2.children[1], bounce);
+					ShuffleUpdate(container2, factsSpan, planetDescription, nameSpan, typeSpan);
+
+					setTimeout(() => {
+						toggleClass(wrapperLeft, flexActive);
+						toggleClass(wrapperLeft, pulse);
+						toggleClass(wrapperRight, flexActive);
+						toggleClass(wrapperRight, zoomIn);
+					}, 500);
+				} else if (
+					container2.classList.contains(open) &&
+					targetContainer.classList.contains(flexInactive) &&
+					container3.classList.contains(flexInactive) &&
+					container4.classList.contains(flexInactive)
+				) {
+					toggleClass(container2, open);
+					toggleClass(container2, flexInactive);
+					toggleClass(container3, flexInactive);
+					toggleClass(container3, open);
+					toggleClass(wrapperLeft, flexActive);
+					toggleClass(wrapperRight, flexActive);
+					toggleClass(container2.children[1], bounce);
+					toggleClass(container3.children[1], bounce);
+					textContent(container3.children[2].children[1], 'Close Window');
+
+					ShuffleUpdate(container3, factsSpan, planetDescription, nameSpan, typeSpan);
+
+					setTimeout(() => {
+						toggleClass(wrapperLeft, flexActive);
+						toggleClass(wrapperLeft, pulse);
+						toggleClass(wrapperRight, flexActive);
+						toggleClass(wrapperRight, zoomIn);
+					}, 500);
+				} else if (
+					container3.classList.contains(open) &&
+					container4.classList.contains(flexInactive) &&
+					container2.classList.contains(flexInactive) &&
+					targetContainer.classList.contains(flexInactive)
+				) {
+					toggleClass(container3, open);
+					toggleClass(container3, flexInactive);
+					toggleClass(container4, flexInactive);
+					toggleClass(container4, open);
+					toggleClass(wrapperLeft, flexActive);
+					toggleClass(wrapperRight, flexActive);
+					toggleClass(container3.children[1], bounce);
+					toggleClass(container4.children[1], bounce);
+					textContent(container4.children[2].children[1], 'Close Window');
+
+					ShuffleUpdate(container4, factsSpan, planetDescription, nameSpan, typeSpan);
+
+					setTimeout(() => {
+						toggleClass(wrapperLeft, flexActive);
+						toggleClass(wrapperLeft, pulse);
+						toggleClass(wrapperRight, flexActive);
+						toggleClass(wrapperRight, zoomIn);
+					}, 500);
+				} else if (
+					container4.classList.contains(open) &&
+					container3.classList.contains(flexInactive) &&
+					container2.classList.contains(flexInactive) &&
+					targetContainer.classList.contains(flexInactive)
+				) {
+					toggleClass(container4, open);
+					toggleClass(container4, flexInactive);
+					toggleClass(targetContainer, flexInactive);
+					toggleClass(targetContainer, open);
+					toggleClass(wrapperLeft, flexActive);
+					toggleClass(wrapperRight, flexActive);
+					toggleClass(container4.children[1], bounce);
+					toggleClass(targetContainer.children[1], bounce);
+					ShuffleUpdate(targetContainer, factsSpan, planetDescription, nameSpan, typeSpan);
+					textContent(targetContainer.children[2].children[1], 'Close Window');
+
+					setTimeout(() => {
+						toggleClass(wrapperLeft, flexActive);
+						toggleClass(wrapperLeft, pulse);
+						toggleClass(wrapperRight, flexActive);
+						toggleClass(wrapperRight, zoomIn);
+					}, 500);
+				}
+			});
 		} else {
 			toggleClass(targetContainer, open);
 			toggleClass(container2, flexInactive);
@@ -406,8 +581,8 @@ const viewPlanets = (toggler, targetContainer, container2, container3, container
 
 //``The Rocks Containers
 viewPlanets(toggleMercury, contMercury, contVenus, contEarth, contMars, mercury);
-viewPlanets(toggleVenus, contVenus, contMercury, contEarth, contMars, venus);
-viewPlanets(toggleEarth, contEarth, contMercury, contVenus, contMars, earth);
+viewPlanets(toggleVenus, contVenus, contEarth, contMars, contMercury, venus);
+viewPlanets(toggleEarth, contEarth, contMars, contMercury, contVenus, earth);
 viewPlanets(toggleMars, contMars, contMercury, contVenus, contEarth, mars);
 
 //``The Gas Containers
@@ -421,3 +596,7 @@ viewPlanets(togglePluto, contPluto, contSun, contMoon, contMilkyWay, pluto);
 viewPlanets(toggleSun, contSun, contPluto, contMoon, contMilkyWay, sun);
 viewPlanets(toggleMoon, contMoon, contPluto, contSun, contMilkyWay, moon);
 viewPlanets(toggleMilkyWay, contMilkyWay, contPluto, contSun, contMoon, milkyWay);
+
+const test = rocksContainer.children[0].children[2].children[1];
+
+console.log(test);
