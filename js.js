@@ -371,24 +371,25 @@ const ShuffleUpdate = (container, arr, obj, description, named, type) => {
 	}
 };
 
-const viewPlanets = (toggler, targetContainer, container2, container3, container4, obj) => {
-	const open = 'open-container';
-	const typeSpan = select('.type-span');
-	const nameSpan = select('.name-span');
-	const factsSpan = selectAll('.facts-span');
-	const bounce = 'bounceInRight';
-	const pulse = 'pulse';
-	const zoomIn = 'zoomIn';
-	const planetDescription = select('.planet-description');
-	const factsWrappers = selectAll('.facts-wrapper');
-	const [wrapperLeft, wrapperRight] = factsWrappers;
-	const factsContainerWrapper = select('.facts-container-wrapper');
-	const shuffleContainer = select('.shuffle-container');
-	const nextBtn = select('.shuffle-btn');
+//Planet container and Shuffle Vars and Function
+const open = 'open-container';
+const typeSpan = select('.type-span');
+const nameSpan = select('.name-span');
+const factsSpan = selectAll('.facts-span');
+const bounce = 'bounceInRight';
+const pulse = 'pulse';
+const zoomIn = 'zoomIn';
+const planetDescription = select('.planet-description');
+const factsWrappers = selectAll('.facts-wrapper');
+const [wrapperLeft, wrapperRight] = factsWrappers;
+const factsContainerWrapper = select('.facts-container-wrapper');
+const shuffleContainer = select('.shuffle-container');
+const nextBtn = select('.shuffle-btn');
 
+const viewPlanets = (toggler, container1, container2, container3, container4, obj) => {
 	toggler.addEventListener(click, () => {
-		if (!targetContainer.classList.contains(open)) {
-			toggleClass(targetContainer, open);
+		if (!container1.classList.contains(open)) {
+			toggleClass(container1, open);
 			toggleClass(container2, flexInactive);
 			toggleClass(container3, flexInactive);
 			toggleClass(container4, flexInactive);
@@ -404,119 +405,17 @@ const viewPlanets = (toggler, targetContainer, container2, container3, container
 				toggleClass(wrapperRight, flexActive);
 				toggleClass(wrapperRight, zoomIn);
 			}, 500);
-
 			planetFacts(factsSpan, obj);
-			textContent(planetDescription, obj.description);
 
+			textContent(planetDescription, obj.description);
 			textContent(nameSpan, obj.namedAfter);
 			textContent(typeSpan, obj.type);
 			parentExitBtn.style.visibility = 'hidden';
+			textContent(toggler, 'Close Window');
 
-			nextBtn.addEventListener(click, () => {
-				if (
-					targetContainer.classList.contains(open) &&
-					container2.classList.contains(flexInactive) &&
-					container3.classList.contains(flexInactive) &&
-					container4.classList.contains(flexInactive)
-				) {
-					toggleClass(targetContainer, open);
-					toggleClass(targetContainer, flexInactive);
-					toggleClass(container2, flexInactive);
-					toggleClass(container2, open);
-					toggleClass(wrapperLeft, flexActive);
-					toggleClass(wrapperRight, flexActive);
-					toggleClass(targetContainer.children[1], bounce);
-					toggleClass(container2.children[1], bounce);
-
-					for (let id of arrOfPlanets) {
-						ShuffleUpdate(container2, factsSpan, id, planetDescription, nameSpan, typeSpan);
-					}
-
-					setTimeout(() => {
-						toggleClass(wrapperLeft, flexActive);
-						toggleClass(wrapperLeft, pulse);
-						toggleClass(wrapperRight, flexActive);
-						toggleClass(wrapperRight, zoomIn);
-					}, 500);
-				} else if (
-					container2.classList.contains(open) &&
-					targetContainer.classList.contains(flexInactive) &&
-					container3.classList.contains(flexInactive) &&
-					container4.classList.contains(flexInactive)
-				) {
-					toggleClass(container2, open);
-					toggleClass(container2, flexInactive);
-					toggleClass(container3, flexInactive);
-					toggleClass(container3, open);
-					toggleClass(wrapperLeft, flexActive);
-					toggleClass(wrapperRight, flexActive);
-					toggleClass(container2.children[1], bounce);
-					toggleClass(container3.children[1], bounce);
-
-					for (let id of arrOfPlanets) {
-						ShuffleUpdate(container3, factsSpan, id, planetDescription, nameSpan, typeSpan);
-					}
-
-					setTimeout(() => {
-						toggleClass(wrapperLeft, flexActive);
-						toggleClass(wrapperLeft, pulse);
-						toggleClass(wrapperRight, flexActive);
-						toggleClass(wrapperRight, zoomIn);
-					}, 500);
-				} else if (
-					container3.classList.contains(open) &&
-					container4.classList.contains(flexInactive) &&
-					container2.classList.contains(flexInactive) &&
-					targetContainer.classList.contains(flexInactive)
-				) {
-					toggleClass(container3, open);
-					toggleClass(container3, flexInactive);
-					toggleClass(container4, flexInactive);
-					toggleClass(container4, open);
-					toggleClass(wrapperLeft, flexActive);
-					toggleClass(wrapperRight, flexActive);
-					toggleClass(container3.children[1], bounce);
-					toggleClass(container4.children[1], bounce);
-
-					for (let id of arrOfPlanets) {
-						ShuffleUpdate(container4, factsSpan, id, planetDescription, nameSpan, typeSpan);
-					}
-
-					setTimeout(() => {
-						toggleClass(wrapperLeft, flexActive);
-						toggleClass(wrapperLeft, pulse);
-						toggleClass(wrapperRight, flexActive);
-						toggleClass(wrapperRight, zoomIn);
-					}, 500);
-				} else if (
-					container4.classList.contains(open) &&
-					container3.classList.contains(flexInactive) &&
-					container2.classList.contains(flexInactive) &&
-					targetContainer.classList.contains(flexInactive)
-				) {
-					toggleClass(container4, open);
-					toggleClass(container4, flexInactive);
-					toggleClass(targetContainer, flexInactive);
-					toggleClass(targetContainer, open);
-					toggleClass(wrapperLeft, flexActive);
-					toggleClass(wrapperRight, flexActive);
-					toggleClass(container4.children[1], bounce);
-					toggleClass(targetContainer.children[1], bounce);
-
-					for (let id of arrOfPlanets) {
-						ShuffleUpdate(targetContainer, factsSpan, id, planetDescription, nameSpan, typeSpan);
-					}
-
-					setTimeout(() => {
-						toggleClass(wrapperLeft, flexActive);
-						toggleClass(wrapperLeft, pulse);
-						toggleClass(wrapperRight, flexActive);
-						toggleClass(wrapperRight, zoomIn);
-					}, 500);
-				}
-			});
+			shuffle(nextBtn, container1, container2, container3, container4);
 		} else {
-			toggleClass(targetContainer, open);
+			toggleClass(container1, open);
 			toggleClass(container2, flexInactive);
 			toggleClass(container3, flexInactive);
 			toggleClass(container4, flexInactive);
@@ -528,6 +427,8 @@ const viewPlanets = (toggler, targetContainer, container2, container3, container
 			toggleClass(shuffleContainer, flexActive);
 			toggleClass(nameSpan, flexActive);
 			toggleClass(typeSpan, flexActive);
+
+			textContent(toggler, 'View More');
 
 			setTimeout(() => {
 				toggleClass(parentExitBtn, pulse);
@@ -560,3 +461,121 @@ viewPlanets(togglePluto, contPluto, contSun, contMoon, contMilkyWay, pluto);
 viewPlanets(toggleSun, contSun, contPluto, contMoon, contMilkyWay, sun);
 viewPlanets(toggleMoon, contMoon, contPluto, contSun, contMilkyWay, moon);
 viewPlanets(toggleMilkyWay, contMilkyWay, contPluto, contSun, contMoon, milkyWay);
+
+const shuffle = (shuffleBtn, container1, container2, container3, container4) => {
+	shuffleBtn.addEventListener(click, () => {
+		if (
+			container1.classList.contains(open) &&
+			container2.classList.contains(flexInactive) &&
+			container3.classList.contains(flexInactive) &&
+			container4.classList.contains(flexInactive)
+		) {
+			toggleClass(container1, open);
+			toggleClass(container1, flexInactive);
+			toggleClass(container2, flexInactive);
+			toggleClass(container2, open);
+			toggleClass(wrapperLeft, flexActive);
+			toggleClass(wrapperRight, flexActive);
+			toggleClass(container1.children[1], bounce);
+			toggleClass(container2.children[1], bounce);
+			textContent(container1.children[2].children[1], 'View More');
+			textContent(container2.children[2].children[1], 'Close Window');
+
+			for (let id of arrOfPlanets) {
+				ShuffleUpdate(container2, factsSpan, id, planetDescription, nameSpan, typeSpan);
+			}
+
+			setTimeout(() => {
+				toggleClass(wrapperLeft, flexActive);
+				toggleClass(wrapperLeft, pulse);
+				toggleClass(wrapperRight, flexActive);
+				toggleClass(wrapperRight, zoomIn);
+			}, 500);
+		} else if (
+			container2.classList.contains(open) &&
+			container3.classList.contains(flexInactive) &&
+			container4.classList.contains(flexInactive) &&
+			container1.classList.contains(flexInactive)
+		) {
+			toggleClass(container2, open);
+			toggleClass(container2, flexInactive);
+			toggleClass(container3, flexInactive);
+			toggleClass(container3, open);
+			toggleClass(wrapperLeft, flexActive);
+			toggleClass(wrapperRight, flexActive);
+			toggleClass(container2.children[1], bounce);
+			toggleClass(container3.children[1], bounce);
+			textContent(container2.children[2].children[1], 'View More');
+			textContent(container3.children[2].children[1], 'Close Window');
+
+			for (let id of arrOfPlanets) {
+				ShuffleUpdate(container3, factsSpan, id, planetDescription, nameSpan, typeSpan);
+			}
+
+			setTimeout(() => {
+				toggleClass(wrapperLeft, flexActive);
+				toggleClass(wrapperLeft, pulse);
+				toggleClass(wrapperRight, flexActive);
+				toggleClass(wrapperRight, zoomIn);
+			}, 500);
+		} else if (
+			container3.classList.contains(open) &&
+			container4.classList.contains(flexInactive) &&
+			container1.classList.contains(flexInactive) &&
+			container2.classList.contains(flexInactive)
+		) {
+			toggleClass(container3, open);
+			toggleClass(container3, flexInactive);
+			toggleClass(container4, flexInactive);
+			toggleClass(container4, open);
+			toggleClass(wrapperLeft, flexActive);
+			toggleClass(wrapperRight, flexActive);
+			toggleClass(container3.children[1], bounce);
+			toggleClass(container4.children[1], bounce);
+			textContent(container3.children[2].children[1], 'View More');
+			textContent(container4.children[2].children[1], 'Close Window');
+
+			for (let id of arrOfPlanets) {
+				ShuffleUpdate(container4, factsSpan, id, planetDescription, nameSpan, typeSpan);
+			}
+
+			setTimeout(() => {
+				toggleClass(wrapperLeft, flexActive);
+				toggleClass(wrapperLeft, pulse);
+				toggleClass(wrapperRight, flexActive);
+				toggleClass(wrapperRight, zoomIn);
+			}, 500);
+		} else if (
+			container4.classList.contains(open) &&
+			container3.classList.contains(flexInactive) &&
+			container2.classList.contains(flexInactive) &&
+			container1.classList.contains(flexInactive)
+		) {
+			toggleClass(container4, open);
+			toggleClass(container4, flexInactive);
+			toggleClass(container1, flexInactive);
+			toggleClass(container1, open);
+			toggleClass(wrapperLeft, flexActive);
+			toggleClass(wrapperRight, flexActive);
+			toggleClass(container4.children[1], bounce);
+			toggleClass(container1.children[1], bounce);
+			textContent(container4.children[2].children[1], 'View More');
+			textContent(container1.children[2].children[1], 'Close Window');
+
+			for (let id of arrOfPlanets) {
+				ShuffleUpdate(container1, factsSpan, id, planetDescription, nameSpan, typeSpan);
+			}
+
+			setTimeout(() => {
+				toggleClass(wrapperLeft, flexActive);
+				toggleClass(wrapperLeft, pulse);
+				toggleClass(wrapperRight, flexActive);
+				toggleClass(wrapperRight, zoomIn);
+			}, 500);
+		}
+	});
+};
+
+const mercuryContainer = rocksContainer.children[0];
+
+console.log(mercuryContainer.children[2]);
