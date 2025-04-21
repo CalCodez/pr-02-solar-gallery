@@ -575,7 +575,3 @@ const shuffle = (shuffleBtn, container1, container2, container3, container4) => 
 		}
 	});
 };
-
-const mercuryContainer = rocksContainer.children[0];
-
-console.log(mercuryContainer.children[2]);
