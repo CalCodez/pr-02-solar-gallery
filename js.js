@@ -26,7 +26,7 @@ const groupName = getById('group-name');
 const rockGroup = 'The Rocks';
 const giantGroup = 'The Giants';
 const staplesGroup = 'Galaxy Staples';
-const defaultName = 'Select Planet Type To View';
+const defaultName = 'Select A Planet Group';
 const planetHeaders = selectAll('h2'); //.open-container h2 (planet name headers)
 const mainWrapper = getById('main-wrapper');
 
@@ -38,12 +38,7 @@ const groupViewSelect = (toggler, container, name) => {
 			toggleClass(entrySelectContainer, flexInactive);
 			toggleClass(container, flexActive);
 			mainWrapper.style.background = 'none';
-
-			if (window.innerWidth <= 600 && entrySelectContainer.classList.contains(flexInactive)) {
-				groupName.style.visibility = 'hidden';
-			} else {
-				textContent(groupName, name);
-			}
+			textContent(groupName, name);
 
 			setTimeout(() => {
 				toggleClass(parentExitBtn, flexActive);
@@ -62,13 +57,7 @@ const groupViewSelect = (toggler, container, name) => {
 			toggleClass(container, flexActive);
 			toggleClass(parentExitBtn, flexActive);
 			mainWrapper.style.background = 'var(--black)';
-
-			if (groupName.style.visibility == 'hidden') {
-				groupName.style.visibility = 'visible';
-				textContent(groupName, defaultName);
-			} else {
-				textContent(groupName, defaultName);
-			}
+			textContent(groupName, defaultName);
 		}
 	});
 };
