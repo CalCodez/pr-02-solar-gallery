@@ -50,7 +50,6 @@
 	flex-direction: column;
 	cursor: pointer;
 	justify-content: space-between;
-	/*outline: var(--ol);*/
 }
 
 .parent-toggler .parent-img-container {
