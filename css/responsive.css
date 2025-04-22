@@ -1,7 +1,6 @@
 @media (max-width: 768px) {
 	h3 {
 		font-size: 2rem;
-		outline: var(--ol);
 	}
 
 	.parent-toggler {
@@ -34,6 +33,12 @@
 
 	.facts-container-right {
 		text-shadow: 2px 2px 1px blue;
+	}
+}
+
+@media (max-width: 768px) and (min-width: 500px) {
+	.planet-container.open-container {
+		transition: width ease-in 0.1s;
 	}
 }
 
@@ -145,5 +150,29 @@
 	}
 	.type-span {
 		bottom: 12%;
+	}
+}
+
+@media (max-width: 321px) {
+	.parent-container.open-container {
+		height: 900px;
+	}
+
+	.facts-container-right {
+		font-size: 0.9rem;
+	}
+
+	.shuffle-container {
+		margin-top: 50px;
+		left: 40%;
+	}
+
+	.planet-container.open-container h2 {
+		font-size: 5rem;
+	}
+
+	.name-span {
+		text-align: center;
+		margin-bottom: 5px;
 	}
 }

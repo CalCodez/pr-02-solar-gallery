@@ -566,3 +566,15 @@ const shuffle = (shuffleBtn, container1, container2, container3, container4) => 
 		}
 	});
 };
+
+const headerAdjust = (obj) => {
+	if (window.innerWidth < 321) {
+		obj.header.style.fontSize = '3.5rem';
+	}
+};
+
+headerAdjust(mercury);
+headerAdjust(jupiter);
+headerAdjust(saturn);
+headerAdjust(uranus);
+headerAdjust(neptune);
