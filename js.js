@@ -463,6 +463,8 @@ viewPlanets(toggleMoon, contMoon, contPluto, contSun, contMilkyWay, moon);
 viewPlanets(toggleMilkyWay, contMilkyWay, contPluto, contSun, contMoon, milkyWay);
 
 const shuffle = (shuffleBtn, container1, container2, container3, container4) => {
+	const viewMore = 'View More';
+	const closeWindow = 'Close Window';
 	shuffleBtn.addEventListener(click, () => {
 		if (
 			container1.classList.contains(open) &&
@@ -478,8 +480,8 @@ const shuffle = (shuffleBtn, container1, container2, container3, container4) => 
 			toggleClass(wrapperRight, flexActive);
 			toggleClass(container1.children[1], bounce);
 			toggleClass(container2.children[1], bounce);
-			textContent(container1.children[2].children[1], 'View More');
-			textContent(container2.children[2].children[1], 'Close Window');
+			textContent(container1.children[2].children[1], viewMore);
+			textContent(container2.children[2].children[1], closeWindow);
 
 			for (let id of arrOfPlanets) {
 				ShuffleUpdate(container2, factsSpan, id, planetDescription, nameSpan, typeSpan);
@@ -505,8 +507,8 @@ const shuffle = (shuffleBtn, container1, container2, container3, container4) => 
 			toggleClass(wrapperRight, flexActive);
 			toggleClass(container2.children[1], bounce);
 			toggleClass(container3.children[1], bounce);
-			textContent(container2.children[2].children[1], 'View More');
-			textContent(container3.children[2].children[1], 'Close Window');
+			textContent(container2.children[2].children[1], viewMore);
+			textContent(container3.children[2].children[1], closeWindow);
 
 			for (let id of arrOfPlanets) {
 				ShuffleUpdate(container3, factsSpan, id, planetDescription, nameSpan, typeSpan);
@@ -532,8 +534,8 @@ const shuffle = (shuffleBtn, container1, container2, container3, container4) => 
 			toggleClass(wrapperRight, flexActive);
 			toggleClass(container3.children[1], bounce);
 			toggleClass(container4.children[1], bounce);
-			textContent(container3.children[2].children[1], 'View More');
-			textContent(container4.children[2].children[1], 'Close Window');
+			textContent(container3.children[2].children[1], viewMore);
+			textContent(container4.children[2].children[1], closeWindow);
 
 			for (let id of arrOfPlanets) {
 				ShuffleUpdate(container4, factsSpan, id, planetDescription, nameSpan, typeSpan);
@@ -559,8 +561,8 @@ const shuffle = (shuffleBtn, container1, container2, container3, container4) => 
 			toggleClass(wrapperRight, flexActive);
 			toggleClass(container4.children[1], bounce);
 			toggleClass(container1.children[1], bounce);
-			textContent(container4.children[2].children[1], 'View More');
-			textContent(container1.children[2].children[1], 'Close Window');
+			textContent(container4.children[2].children[1], viewMore);
+			textContent(container1.children[2].children[1], closeWindow);
 
 			for (let id of arrOfPlanets) {
 				ShuffleUpdate(container1, factsSpan, id, planetDescription, nameSpan, typeSpan);
